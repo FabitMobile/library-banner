@@ -1,9 +1,9 @@
-package ru.spb.banner.internal.presentation.store.reducer
+package ru.fabit.banner.presentation.store.reducer
 
+import ru.fabit.banner.presentation.store.action.BannerAction
+import ru.fabit.banner.presentation.store.state.BannerEvent
+import ru.fabit.banner.presentation.store.state.BannerState
 import ru.fabit.storecoroutines.EventsReducer
-import ru.spb.banner.internal.presentation.store.action.BannerAction
-import ru.spb.banner.internal.presentation.store.state.BannerEvent
-import ru.spb.banner.internal.presentation.store.state.BannerState
 
 class BannerReducer : EventsReducer<BannerState, BannerAction> {
     override fun reduce(

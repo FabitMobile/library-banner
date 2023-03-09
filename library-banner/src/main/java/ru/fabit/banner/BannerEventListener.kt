@@ -1,4 +1,4 @@
-package ru.spb.banner
+package ru.fabit.banner
 
 interface BannerEventListener {
     fun positive(banner: Banner)

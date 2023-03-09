@@ -1,6 +1,6 @@
-package ru.spb.banner.internal.presentation.store.state
+package ru.fabit.banner.presentation.store.state
 
-import ru.spb.banner.Banner
+import ru.fabit.banner.Banner
 
 sealed interface BannerEvent {
     data class Error(val message: String) : BannerEvent

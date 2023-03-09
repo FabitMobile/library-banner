@@ -1,6 +1,6 @@
-package ru.spb.banner.internal.presentation.store.action
+package ru.fabit.banner.presentation.store.action
 
-import ru.spb.banner.Banner
+import ru.fabit.banner.Banner
 
 sealed interface BannerAction {
     object Init : BannerAction

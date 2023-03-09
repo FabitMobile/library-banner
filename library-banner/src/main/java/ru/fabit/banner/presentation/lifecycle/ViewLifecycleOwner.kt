@@ -1,4 +1,4 @@
-package ru.spb.banner.internal.presentation.lifecycle
+package ru.fabit.banner.presentation.lifecycle
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -7,10 +7,6 @@ import androidx.lifecycle.LifecycleRegistry
 open class ViewLifecycleOwner(parent: LifecycleOwner) : LifecycleOwner {
 
     private val mLifecycleRegistry: LifecycleRegistry = LifecycleRegistry(parent)
-
-    override fun getLifecycle(): Lifecycle {
-        return mLifecycleRegistry
-    }
 
     init {
         mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START)
@@ -28,4 +24,7 @@ open class ViewLifecycleOwner(parent: LifecycleOwner) : LifecycleOwner {
         mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP)
         mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     }
+
+    override val lifecycle: Lifecycle
+        get() = mLifecycleRegistry
 }

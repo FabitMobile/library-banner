@@ -1,16 +1,16 @@
-package ru.spb.banner.di
+package ru.fabit.banner.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import ru.fabit.banner.presentation.store.BannerStore
+import ru.fabit.banner.presentation.store.action.BannerAction
+import ru.fabit.banner.presentation.store.bindactionsource.UpdateBindActionSource
+import ru.fabit.banner.presentation.store.reducer.BannerReducer
+import ru.fabit.banner.presentation.store.state.BannerState
 import ru.fabit.storecoroutines.ErrorHandler
 import ru.fabit.viewcontroller.ViewControllerComponent
 import ru.fabit.viewcontroller.ViewControllerScoped
-import ru.spb.banner.internal.presentation.store.BannerStore
-import ru.spb.banner.internal.presentation.store.action.BannerAction
-import ru.spb.banner.internal.presentation.store.bindactionsource.UpdateBindActionSource
-import ru.spb.banner.internal.presentation.store.reducer.BannerReducer
-import ru.spb.banner.internal.presentation.store.state.BannerState
 
 @Module
 @InstallIn(ViewControllerComponent::class)

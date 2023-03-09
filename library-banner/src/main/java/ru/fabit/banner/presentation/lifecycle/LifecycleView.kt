@@ -1,4 +1,4 @@
-package ru.spb.banner.internal.presentation.lifecycle
+package ru.fabit.banner.presentation.lifecycle
 
 interface LifecycleView {
     fun onResume()

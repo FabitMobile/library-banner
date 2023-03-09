@@ -1,10 +1,10 @@
-package ru.spb.banner.internal.presentation.store
+package ru.fabit.banner.presentation.store
 
+import ru.fabit.banner.presentation.store.action.BannerAction
+import ru.fabit.banner.presentation.store.reducer.BannerReducer
+import ru.fabit.banner.presentation.store.state.BannerEvent
+import ru.fabit.banner.presentation.store.state.BannerState
 import ru.fabit.storecoroutines.*
-import ru.spb.banner.internal.presentation.store.action.BannerAction
-import ru.spb.banner.internal.presentation.store.reducer.BannerReducer
-import ru.spb.banner.internal.presentation.store.state.BannerEvent
-import ru.spb.banner.internal.presentation.store.state.BannerState
 
 class BannerStore(
     state: BannerState,

@@ -1,4 +1,4 @@
-package ru.spb.banner.internal.presentation.view
+package ru.fabit.banner.presentation.view
 
 import android.content.Context
 import android.util.TypedValue

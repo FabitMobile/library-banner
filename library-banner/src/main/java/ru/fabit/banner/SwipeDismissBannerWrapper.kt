@@ -1,11 +1,11 @@
-package ru.spb.banner
+package ru.fabit.banner
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
 import androidx.viewbinding.ViewBinding
-import ru.spb.banner.databinding.ItemSwipeDismissBannerBinding
+import ru.fabit.banner.databinding.ItemSwipeDismissBannerBinding
 import ru.turlir.android.verticalswipe.*
 
 open class SwipeDismissBannerWrapper(

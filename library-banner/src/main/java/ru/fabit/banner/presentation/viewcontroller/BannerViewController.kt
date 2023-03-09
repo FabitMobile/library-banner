@@ -1,12 +1,12 @@
-package ru.spb.banner.internal.presentation.viewcontroller
+package ru.fabit.banner.presentation.viewcontroller
 
+import ru.fabit.banner.Banner
+import ru.fabit.banner.presentation.store.BannerStore
+import ru.fabit.banner.presentation.store.action.BannerAction
+import ru.fabit.banner.presentation.store.state.BannerState
 import ru.fabit.viewcontroller.HiltViewController
 import ru.fabit.viewcontroller.StateView
 import ru.fabit.viewcontroller.ViewController
-import ru.spb.banner.Banner
-import ru.spb.banner.internal.presentation.store.BannerStore
-import ru.spb.banner.internal.presentation.store.action.BannerAction
-import ru.spb.banner.internal.presentation.store.state.BannerState
 import javax.inject.Inject
 
 @HiltViewController

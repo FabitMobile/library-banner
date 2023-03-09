@@ -1,4 +1,4 @@
-package ru.spb.banner.internal.presentation.view
+package ru.fabit.banner.presentation.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,18 +10,18 @@ import androidx.core.view.children
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import ru.fabit.banner.Banner
+import ru.fabit.banner.BannerEventListener
+import ru.fabit.banner.BannerItem
+import ru.fabit.banner.databinding.ViewBannerContainerBinding
+import ru.fabit.banner.presentation.lifecycle.LifecycleView
+import ru.fabit.banner.presentation.lifecycle.ViewLifecycleOwner
+import ru.fabit.banner.presentation.store.state.BannerEvent
+import ru.fabit.banner.presentation.store.state.BannerState
+import ru.fabit.banner.presentation.viewcontroller.BannerViewController
 import ru.fabit.viewcontroller.StateView
 import ru.fabit.viewcontroller.registerViewController
 import ru.fabit.viewcontroller.viewControllers
-import ru.spb.banner.Banner
-import ru.spb.banner.BannerEventListener
-import ru.spb.banner.BannerItem
-import ru.spb.banner.databinding.ViewBannerContainerBinding
-import ru.spb.banner.internal.presentation.lifecycle.LifecycleView
-import ru.spb.banner.internal.presentation.lifecycle.ViewLifecycleOwner
-import ru.spb.banner.internal.presentation.store.state.BannerEvent
-import ru.spb.banner.internal.presentation.store.state.BannerState
-import ru.spb.banner.internal.presentation.viewcontroller.BannerViewController
 
 @AndroidEntryPoint
 class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
@@ -140,5 +140,5 @@ class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
 
     //endregion
 
-    override fun getLifecycle() = viewLifecycleOwner.lifecycle
+    override val lifecycle = viewLifecycleOwner.lifecycle
 }

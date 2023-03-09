@@ -1,4 +1,4 @@
-package ru.spb.banner
+package ru.fabit.banner
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

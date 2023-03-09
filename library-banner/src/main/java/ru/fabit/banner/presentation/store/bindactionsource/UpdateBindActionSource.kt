@@ -1,9 +1,9 @@
-package ru.spb.banner.internal.presentation.store.bindactionsource
+package ru.fabit.banner.presentation.store.bindactionsource
 
 import kotlinx.coroutines.flow.flow
+import ru.fabit.banner.presentation.store.action.BannerAction
+import ru.fabit.banner.presentation.store.state.BannerState
 import ru.fabit.storecoroutines.BindActionSource
-import ru.spb.banner.internal.presentation.store.action.BannerAction
-import ru.spb.banner.internal.presentation.store.state.BannerState
 import javax.inject.Inject
 
 class UpdateBindActionSource @Inject constructor() : BindActionSource<BannerState, BannerAction>(

@@ -15,7 +15,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
-
+    buildFeatures {
+        viewBinding true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -47,7 +49,10 @@ dependencies {
 
     implementation "ru.turlir.android:verticalswipebehavior:1.2.0"
 
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
-    implementation "androidx.fragment:fragment-ktx:1.5.0"
-    implementation "androidx.activity:activity-ktx:1.5.0"
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+    implementation "androidx.fragment:fragment-ktx:1.5.5"
+    implementation "androidx.activity:activity-ktx:1.6.1"
 }
