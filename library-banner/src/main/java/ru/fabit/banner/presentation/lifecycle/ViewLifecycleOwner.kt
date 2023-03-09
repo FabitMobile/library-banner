@@ -25,6 +25,5 @@ open class ViewLifecycleOwner(parent: LifecycleOwner) : LifecycleOwner {
         mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     }
 
-    override val lifecycle: Lifecycle
-        get() = mLifecycleRegistry
+    override fun getLifecycle() = mLifecycleRegistry
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -140,5 +141,5 @@ class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
 
     //endregion
 
-    override val lifecycle = viewLifecycleOwner.lifecycle
+    override fun getLifecycle() = viewLifecycleOwner.lifecycle
 }
