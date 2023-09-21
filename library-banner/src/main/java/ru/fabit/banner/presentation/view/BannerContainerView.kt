@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.children
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,11 +20,10 @@ import ru.fabit.banner.presentation.store.state.BannerEvent
 import ru.fabit.banner.presentation.store.state.BannerState
 import ru.fabit.banner.presentation.viewcontroller.BannerViewController
 import ru.fabit.viewcontroller.StateView
-import ru.fabit.viewcontroller.registerViewController
-import ru.fabit.viewcontroller.viewControllers
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
+open class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
     StateView<BannerState> {
 
     constructor(context: Context) : super(context) {
@@ -46,6 +44,10 @@ class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
 
     private fun init() {
         viewLifecycleOwner = ViewLifecycleOwner(this)
+        initUi()
+    }
+
+    protected open fun initUi() {
         binding?.root?.setOnApplyWindowInsetsCallback { view, windowInsets ->
             val insets = windowInsets.toWindowInsets()?.let {
                 WindowInsetsCompat.toWindowInsetsCompat(it)
@@ -65,12 +67,13 @@ class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
         }
     }
 
-    private lateinit var viewLifecycleOwner: ViewLifecycleOwner
+    protected lateinit var viewLifecycleOwner: ViewLifecycleOwner
 
-    private var binding: ViewBannerContainerBinding? =
+    protected var binding: ViewBannerContainerBinding? =
         ViewBannerContainerBinding.inflate(LayoutInflater.from(context), this, true)
 
-    private val viewController: BannerViewController by viewControllers()
+    @Inject
+    lateinit var viewController: BannerViewController
 
     var bannerEventListener: BannerEventListener? = null
 
@@ -90,7 +93,7 @@ class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
         }
     }
 
-    private fun ViewBannerContainerBinding?.redraw(banner: Banner?) {
+    protected open fun ViewBannerContainerBinding?.redraw(banner: Banner?) {
         this?.apply {
             if (banner != null || (binding?.root?.childCount ?: -1) != 0) {
                 root.removeAllViews()
@@ -101,7 +104,7 @@ class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun ViewBannerContainerBinding.createView(item: Banner) {
+    protected open fun ViewBannerContainerBinding.createView(item: Banner) {
         bannerEventListener?.let { item.register(it) }
         if (item is BannerItem<out ViewBinding>) {
             item as BannerItem<ViewBinding>
@@ -113,7 +116,7 @@ class BannerContainerView : CoordinatorLayout, LifecycleOwner, LifecycleView,
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        registerViewController(viewController)
+        lifecycle.addObserver(viewController)
         onResume()
     }
 
