@@ -67,9 +67,7 @@ open class SwipeDismissBannerWrapper(
 
         other as SwipeDismissBannerWrapper
 
-        if (banner != other.banner) return false
-
-        return true
+        return banner == other.banner
     }
 
     override fun hashCode(): Int {
