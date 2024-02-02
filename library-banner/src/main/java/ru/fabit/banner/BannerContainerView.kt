@@ -70,6 +70,10 @@ class BannerContainerView : CoordinatorLayout {
 
     private var topInset: Int? = null
 
+    fun setBannerListener(listener: BannerListener) {
+        bannerListener = listener
+    }
+
     fun update(items: Collection<Banner>) {
         val current = items.maxByOrNull { it.zIndex }
         viewModel?.apply {

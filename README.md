@@ -7,7 +7,7 @@
 ## Использование
 Указать в разметке контейнер
 ```xml
-<ru.fabit.banner.presentation.view.BannerContainerView
+<ru.fabit.banner.BannerContainerView
     android:id="@+id/bannerContainerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,10 +31,10 @@ class MainNotificationBanner(
     override fun bind(binding: YourlayoutBinding) {
         binding.textViewTitle.text = title
         binding.textViewMore.setOnClickListener {
-            listener?.positive(this)
+            perform(BannerAction.More)
         }
         binding.imageViewClose.setOnClickListener {
-            listener?.negative(this)
+            perform(BannerAction.Close)
         }
     }
 
@@ -47,14 +47,10 @@ class MainNotificationBanner(
 ```
 В классе представления установить слушателя и вызвать обновление контента контейнера
 ```kotlin
-    bannerContainerView.bannerEventListener = object : BannerEventListener {
-        override fun negative(banner: Banner) {
-        }
-    
-        override fun positive(banner: Banner) {
+    bannerContainerView.setBannerListener { action, banner ->
+        when(action) {
         }
     }
-
     bannerContainerView.update(banners)
 ```
 Чтобы добавить SwipeDismiss эффект, нужно обернуть баннер в `SwipeDismissBannerWrapper`
