@@ -47,7 +47,7 @@ class MainNotificationBanner(
 ```
 В классе представления установить слушателя и вызвать обновление контента контейнера
 ```kotlin
-    bannerContainerView.setBannerListener { action, banner ->
+    bannerContainerView.setListener { action, banner ->
         when(action) {
         }
     }

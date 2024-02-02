@@ -70,7 +70,7 @@ class BannerContainerView : CoordinatorLayout {
 
     private var topInset: Int? = null
 
-    fun setBannerListener(listener: BannerListener) {
+    fun setListener(listener: BannerListener) {
         bannerListener = listener
     }
 

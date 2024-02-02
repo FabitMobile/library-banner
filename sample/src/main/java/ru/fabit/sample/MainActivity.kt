@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), BannerListener {
         setContentView(R.layout.activity_main)
 
         bannerContainerView = findViewById(R.id.banner)
-        bannerContainerView.setBannerListener { action, banner ->
+        bannerContainerView.setListener { action, banner ->
             when(action) {
 
             }
