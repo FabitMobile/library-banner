@@ -11,7 +11,7 @@ class MainBanner(
     override fun bind(binding: BannerMainBinding) {
         binding.tvTitle.text = text
         binding.tvTitle.setOnClickListener {
-            listener?.positive(this)
+            perform(MyBannerAction)
         }
     }
 

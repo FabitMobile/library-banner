@@ -66,7 +66,7 @@ class BannerContainerView : CoordinatorLayout {
         findViewTreeViewModelStoreOwner()?.let { ViewModelProvider(it)[BannerViewModel::class.java] }
     }
 
-    var bannerEventListener: BannerEventListener? = null
+    var bannerListener: BannerListener? = null
 
     private var topInset: Int? = null
 
@@ -108,7 +108,7 @@ class BannerContainerView : CoordinatorLayout {
 
     @Suppress("UNCHECKED_CAST")
     private fun ViewBannerContainerBinding.createView(item: Banner) {
-        bannerEventListener?.let { item.register(it) }
+        bannerListener?.let { item.register(it) }
         if (item is BannerItem<out ViewBinding>) {
             item as BannerItem<ViewBinding>
             val itemBinding = item.initializeViewBinding(LayoutInflater.from(context), root, true)

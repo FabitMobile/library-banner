@@ -6,11 +6,15 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.LayoutParams
 import androidx.viewbinding.ViewBinding
 import ru.fabit.banner.databinding.ItemSwipeDismissBannerBinding
-import ru.turlir.android.verticalswipe.*
+import ru.turlir.android.verticalswipe.AlphaElevationSideEffect
+import ru.turlir.android.verticalswipe.BelowFractionalClamp
+import ru.turlir.android.verticalswipe.NegativeFactorFilterSideEffect
+import ru.turlir.android.verticalswipe.SettleOnTopAction
+import ru.turlir.android.verticalswipe.VerticalSwipeBehavior
 
 open class SwipeDismissBannerWrapper(
     val banner: Banner,
-) : BannerItem<ItemSwipeDismissBannerBinding>(banner.zIndex), BannerEventListener {
+) : BannerItem<ItemSwipeDismissBannerBinding>(banner.zIndex), BannerListener {
     @Suppress("UNCHECKED_CAST")
     override fun bind(binding: ItemSwipeDismissBannerBinding) {
         if (banner is BannerItem<out ViewBinding>) {
@@ -34,7 +38,7 @@ open class SwipeDismissBannerWrapper(
             listener = object : VerticalSwipeBehavior.SwipeListener {
                 override fun onPostSettled(diff: Int) {
                     if (diff < 0)
-                        this@SwipeDismissBannerWrapper.listener?.negative(this@SwipeDismissBannerWrapper)
+                        perform(BannerAction.Close, this@SwipeDismissBannerWrapper)
                 }
 
                 override fun onPreSettled(diff: Int) {}
@@ -53,12 +57,8 @@ open class SwipeDismissBannerWrapper(
     ): ItemSwipeDismissBannerBinding =
         ItemSwipeDismissBannerBinding.inflate(inflater, parent, attachToParent)
 
-    override fun positive(banner: Banner) {
-        listener?.positive(this)
-    }
-
-    override fun negative(banner: Banner) {
-        listener?.negative(this)
+    override fun perform(action: BannerAction, banner: Banner) {
+        listener?.perform(action, banner)
     }
 
     override fun equals(other: Any?): Boolean {
