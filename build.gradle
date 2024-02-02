@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-project.version = "0.3.0"
+project.version = "0.3.2"
 
 allprojects {
     repositories {
